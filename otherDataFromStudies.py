@@ -1,7 +1,8 @@
 import os
 import pandas as pd
-import numpy as np
+from tqdm import tqdm
 import json
+import numpy as np
 
 # extract attribute where we expect a single answer (or 0)
 def getSingularAttribute(attribute,root):
@@ -69,7 +70,7 @@ def main():
             }
     }
     #read all the json files and get stats
-    for item in toGet:
+    for item in tqdm(toGet,desc="Calculating statistics", leave=True):
         filepath = os.path.join(os.getcwd(),"ctg-studies",item["NCTNum"]+".json")
         with open(filepath, "r", encoding="utf8") as f:
             jsonData = json.load(f)

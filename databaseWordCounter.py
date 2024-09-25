@@ -53,7 +53,7 @@ def main():
     startTime = time.time()
     print("Starting")
 
-    wordsWeWant = "depression,anxiety,stress,loneliness" #None
+    wordsWeWant = "depression,anxiety,stress,distress" #None
     
     if(wordsWeWant is not None):
         wordsWeWant = getWords(wordsWeWant)
@@ -99,7 +99,7 @@ def main():
 
     print("Starting file reads, total current runtime:",time.time()-startTime)
     #read all the json files and get word list
-    results = [item for item in tqdm(toGet,desc= "Reading files and doing some preprocessing", leave=True)]
+    results = [preProcessItem(item) for item in tqdm(toGet,desc= "Reading files and doing some preprocessing", leave=True)]
     
     print("Starting Finalization:",time.time()-startTime)
 
