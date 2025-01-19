@@ -27,7 +27,7 @@ def getSectionsWeWant(filepath):
     with open(filepath, "r", encoding="utf8") as f:
         data = json.load(f)
         description = data["protocolSection"]["descriptionModule"]
-        text=description.get('briefSummary', "") + "\n" + data.get('detailedDescription', "")    
+        text=description.get('briefSummary', "") + "\n" + description.get('detailedDescription', "")  
         assert(text.strip()!="")
     
     return text
